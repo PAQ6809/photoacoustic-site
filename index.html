@@ -8,7 +8,87 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
-        /* 保留原有樣式不變 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html {
+            font-family: "Noto Sans TC", sans-serif;
+            background-color: #0f1116;
+            color: white;
+            scroll-behavior: smooth;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #181a23;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        nav h2 { color: #66ccff; }
+        nav ul {
+            display: flex; list-style: none; gap: 2rem;
+        }
+        nav ul li a, nav ul li button {
+            text-decoration: none; color: #d1d1d1; font-weight: 500;
+            background: none; border: none; cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover, nav ul li button:hover { color: #66ccff; }
+        section {
+            padding: 6rem 2rem; max-width: 1000px; margin: auto;
+        }
+        .hero {
+            background: linear-gradient(to right, #1c1f2b, #181a23);
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; text-align: center; padding: 0 1rem;
+        }
+        .hero-content h1 { font-size: 3rem; margin-bottom: 1rem; color: #66ccff; }
+        .hero-content p { font-size: 1.25rem; margin-bottom: 2rem; color: #d1d1d1; }
+        .cta-buttons {
+            display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            background-color: #66ccff;
+            color: #0f1116;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn:hover { background-color: #4db3e6; transform: translateY(-2px); }
+        .btn.secondary {
+            background-color: transparent;
+            border: 2px solid #66ccff;
+            color: #66ccff;
+        }
+        .btn.secondary:hover { background-color: #66ccff; color: #0f1116; }
+        form { display: flex; flex-direction: column; gap: 1rem; }
+        input, textarea {
+            padding: 0.75rem;
+            border-radius: 5px;
+            border: none;
+            background-color: #22252e;
+            color: white;
+            font-size: 1rem;
+        }
+        input:focus, textarea:focus { outline: 2px solid #66ccff; }
+        footer {
+            text-align: center; padding: 2rem;
+            background-color: #181a23; color: #888;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column; gap: 1rem;
+                background: #181a23; padding: 1rem;
+                position: absolute; top: 60px; right: 10px;
+                border-radius: 8px;
+            }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content p { font-size: 1rem; }
+            section { padding: 4rem 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -19,7 +99,7 @@
             <li><a href="#tech" data-en="Technology" data-zh="技術原理">技術原理</a></li>
             <li><a href="#product" data-en="Products" data-zh="產品介紹">產品介紹</a></li>
             <li><a href="#contact" data-en="Contact" data-zh="聯絡我們">聯絡我們</a></li>
-            <li><button onclick="toggleLanguage()" class="btn secondary" style="padding:0.25rem 0.75rem; font-size:0.9rem">EN / 中</button></li>
+            <li><button onclick="toggleLanguage()" class="btn secondary">EN / 中</button></li>
         </ul>
     </nav>
 
@@ -33,6 +113,14 @@
             </div>
         </div>
     </header>
+
+    <section id="product" data-aos="fade-up">
+        <h2 data-en="Products" data-zh="產品介紹">產品介紹</h2>
+        <div style="text-align:center; margin: 2rem 0">
+            <img src="./images/9ed5c7cc-8740-4033-932b-d676ea273c38.png" alt="Product Demo" style="max-width:90%; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.5);">
+            <p data-en="Prototype visualization of the photoacoustic membrane." data-zh="光聲耳膜裝置之原型視覺化展示">光聲耳膜裝置之原型視覺化展示</p>
+        </div>
+    </section>
 
     <section id="contact" data-aos="fade-up">
         <h2 data-en="Contact Us" data-zh="聯絡我們">聯絡我們</h2>
@@ -52,21 +140,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init();
-
-        (function() {
-            emailjs.init("service_ny95zid");
-        })();
-
+        (function() { emailjs.init("service_ny95zid"); })();
         document.getElementById("contact-form").addEventListener("submit", function(event) {
             event.preventDefault();
-            emailjs.sendForm("service_ny95zid", "template_default", this)
-                .then(function(response) {
-                    alert("訊息已送出，感謝聯絡我們！");
-                }, function(error) {
-                    alert("發送失敗，請稍後再試。\n" + JSON.stringify(error));
-                });
+            emailjs.sendForm("service_ny95zid", "template_default", this).then(function(response) {
+                alert("訊息已送出，感謝聯絡我們！");
+            }, function(error) {
+                alert("發送失敗，請稍後再試。\n" + JSON.stringify(error));
+            });
         });
-
         function toggleLanguage() {
             document.querySelectorAll("[data-en]").forEach(el => {
                 const isEnglish = el.textContent.trim() === el.dataset.zh;
