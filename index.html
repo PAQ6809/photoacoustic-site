@@ -13,19 +13,19 @@
 </head>
 <body>
     <nav>
-        <h2>PhotoAcoustic Sense</h2>
+        <h2 data-en="PhotoAcoustic Sense" data-zh="PhotoAcoustic Sense">PhotoAcoustic Sense</h2>
         <ul>
-            <li><a href="#home">首頁</a></li>
-            <li><a href="#tech">技術原理</a></li>
-            <li><a href="#product">產品介紹</a></li>
-            <li><a href="#contact">聯絡我們</a></li>
+            <li><a href="#home" data-en="Home" data-zh="首頁">首頁</a></li>
+            <li><a href="#tech" data-en="Technology" data-zh="技術原理">技術原理</a></li>
+            <li><a href="#product" data-en="Products" data-zh="產品介紹">產品介紹</a></li>
+            <li><a href="#contact" data-en="Contact" data-zh="聯絡我們">聯絡我們</a></li>
             <li><button onclick="toggleLanguage()" class="btn secondary" style="padding:0.25rem 0.75rem; font-size:0.9rem">EN / 中</button></li>
         </ul>
     </nav>
 
     <header class="hero" id="home">
         <div class="hero-content" data-aos="fade-up">
-            <h1 data-en="PhotoAcoustic Sense" data-zh="PhotoAcoustic Sense">PhotoAcoustic Sense</h1>
+            <h1 data-en="PhotoAcoustic Sense" data-zh="光聲感知科技">光聲感知科技</h1>
             <p data-en="Reshaping the Future through Light and Sound" data-zh="讓光與聲，重構感知未來">讓光與聲，重構感知未來</p>
             <div class="cta-buttons">
                 <a href="#tech" class="btn" data-en="Learn Technology" data-zh="了解技術原理">了解技術原理</a>
@@ -38,27 +38,25 @@
         <h2 data-en="Contact Us" data-zh="聯絡我們">聯絡我們</h2>
         <p data-en="Feel free to contact us via the form below." data-zh="如果你對我們的技術、產品或合作方案有興趣，歡迎透過下列表單聯繫我們：">如果你對我們的技術、產品或合作方案有興趣，歡迎透過下列表單聯繫我們：</p>
         <form id="contact-form">
-            <input type="text" name="user_name" placeholder="您的姓名" required>
-            <input type="email" name="user_email" placeholder="電子信箱" required>
-            <textarea name="message" rows="6" placeholder="請輸入您的訊息..."></textarea>
-            <button type="submit" class="btn">送出</button>
+            <input type="text" name="user_name" placeholder="您的姓名" data-en="Your Name" required>
+            <input type="email" name="user_email" placeholder="電子信箱" data-en="Email Address" required>
+            <textarea name="message" rows="6" placeholder="請輸入您的訊息..." data-en="Type your message..."></textarea>
+            <button type="submit" class="btn" data-en="Submit" data-zh="送出">送出</button>
         </form>
     </section>
 
     <footer>
-        &copy; 2025 PhotoAcoustic Sense. All rights reserved. ｜ 本站支援手機版、自訂 favicon、多語系建構中。
+        <span data-en="&copy; 2025 PhotoAcoustic Sense. All rights reserved." data-zh="&copy; 2025 PhotoAcoustic Sense. 版權所有。">&copy; 2025 PhotoAcoustic Sense. 版權所有。</span>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init();
 
-        // EmailJS init
         (function() {
             emailjs.init("service_ny95zid");
         })();
 
-        // 表單送出邏輯
         document.getElementById("contact-form").addEventListener("submit", function(event) {
             event.preventDefault();
             emailjs.sendForm("service_ny95zid", "template_default", this)
@@ -69,11 +67,10 @@
                 });
         });
 
-        // 中英文切換
         function toggleLanguage() {
             document.querySelectorAll("[data-en]").forEach(el => {
-                const currentText = el.textContent.trim();
-                el.textContent = (currentText === el.dataset.en) ? el.dataset.zh : el.dataset.en;
+                const isEnglish = el.textContent.trim() === el.dataset.zh;
+                el.textContent = isEnglish ? el.dataset.en : el.dataset.zh;
             });
         }
     </script>
