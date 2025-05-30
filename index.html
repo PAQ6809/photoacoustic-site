@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>PhotoAcoustic Sense｜光聲感知科技</title>
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4129/4129570.png">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4129/4129570.png"/>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html {
@@ -92,69 +92,105 @@
     </style>
 </head>
 <body>
-    <nav>
-        <h2 data-en="PhotoAcoustic Sense" data-zh="PhotoAcoustic Sense">PhotoAcoustic Sense</h2>
-        <ul>
-            <li><a href="#home" data-en="Home" data-zh="首頁">首頁</a></li>
-            <li><a href="#tech" data-en="Technology" data-zh="技術原理">技術原理</a></li>
-            <li><a href="#product" data-en="Products" data-zh="產品介紹">產品介紹</a></li>
-            <li><a href="#contact" data-en="Contact" data-zh="聯絡我們">聯絡我們</a></li>
-            <li><button onclick="toggleLanguage()" class="btn secondary">EN / 中</button></li>
-        </ul>
-    </nav>
-
-    <header class="hero" id="home">
-        <div class="hero-content" data-aos="fade-up">
-            <h1 data-en="PhotoAcoustic Sense" data-zh="光聲感知科技">光聲感知科技</h1>
-            <p data-en="Reshaping the Future through Light and Sound" data-zh="讓光與聲，重構感知未來">讓光與聲，重構感知未來</p>
-            <div class="cta-buttons">
-                <a href="#tech" class="btn" data-en="Learn Technology" data-zh="了解技術原理">了解技術原理</a>
-                <a href="#contact" class="btn secondary" data-en="Contact Us" data-zh="聯絡我們">聯絡我們</a>
-            </div>
+<nav>
+    <h2 data-en="PhotoAcoustic Sense" data-zh="PhotoAcoustic Sense">PhotoAcoustic Sense</h2>
+    <ul>
+        <li><a href="#home" data-en="Home" data-zh="首頁">首頁</a></li>
+        <li><a href="#tech" data-en="Technology" data-zh="技術原理">技術原理</a></li>
+        <li><a href="#product" data-en="Products" data-zh="產品介紹">產品介紹</a></li>
+        <li><a href="#contact" data-en="Contact" data-zh="聯絡我們">聯絡我們</a></li>
+        <li><button onclick="toggleLanguage()" class="btn secondary">EN / 中</button></li>
+    </ul>
+</nav>
+<header class="hero" id="home">
+    <div class="hero-content" data-aos="fade-up">
+        <h1 data-en="PhotoAcoustic Sense" data-zh="光聲感知科技">光聲感知科技</h1>
+        <p data-en="Reshaping the Future through Light and Sound" data-zh="讓光與聲，重構感知未來">讓光與聲，重構感知未來</p>
+        <div class="cta-buttons">
+            <a href="#tech" class="btn" data-en="Learn Technology" data-zh="了解技術原理">了解技術原理</a>
+            <a href="#contact" class="btn secondary" data-en="Contact Us" data-zh="聯絡我們">聯絡我們</a>
         </div>
-    </header>
+    </div>
+</header>
 
-    <section id="product" data-aos="fade-up">
-        <h2 data-en="Products" data-zh="產品介紹">產品介紹</h2>
-        <div style="text-align:center; margin: 2rem 0">
-            <img src="./images/9ed5c7cc-8740-4033-932b-d676ea273c38.png" alt="Product Demo" style="max-width:90%; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.5);">
-            <p data-en="Prototype visualization of the photoacoustic membrane." data-zh="光聲耳膜裝置之原型視覺化展示">光聲耳膜裝置之原型視覺化展示</p>
+<section id="product" data-aos="fade-up">
+    <h2 data-en="Products" data-zh="產品介紹">產品介紹</h2>
+    <div style="text-align:center; margin: 2rem 0">
+        <img src="./images/9ed5c7cc-8740-4033-932b-d676ea273c38.png" alt="Product Demo" style="max-width:90%; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.5);">
+        <p data-en="Prototype visualization of the photoacoustic membrane." data-zh="光聲耳膜裝置之原型視覺化展示">光聲耳膜裝置之原型視覺化展示</p>
+    </div>
+</section>
+
+<!-- 💬 AI Chatbot Assistant (frontend-only demo, tone: 傲嬌又親切♥) -->
+<div id="ai-assistant" style="position:fixed; bottom:20px; right:20px; z-index:9999;">
+    <button onclick="toggleChat()" style="padding:10px 16px; background:#66ccff; color:#0f1116; border:none; border-radius:10px; font-weight:bold; cursor:pointer; box-shadow:0 0 10px rgba(0,0,0,0.3);">
+        💬 AI 助理
+    </button>
+    <div id="chat-window" style="display:none; width:300px; height:400px; background:#181a23; color:white; border-radius:10px; margin-top:10px; padding:10px; box-shadow:0 0 20px rgba(0,0,0,0.4); overflow-y:auto;">
+        <div id="chat-log" style="height:300px; overflow-y:auto; font-size:0.9rem;">
+            <div>👾：哼～你終於來問我了呢，想知道光聲是什麼對吧？♥</div>
         </div>
-    </section>
-
-    <section id="contact" data-aos="fade-up">
-        <h2 data-en="Contact Us" data-zh="聯絡我們">聯絡我們</h2>
-        <p data-en="Feel free to contact us via the form below." data-zh="如果你對我們的技術、產品或合作方案有興趣，歡迎透過下列表單聯繫我們：">如果你對我們的技術、產品或合作方案有興趣，歡迎透過下列表單聯繫我們：</p>
-        <form id="contact-form">
-            <input type="text" name="user_name" placeholder="您的姓名" data-en="Your Name" required>
-            <input type="email" name="user_email" placeholder="電子信箱" data-en="Email Address" required>
-            <textarea name="message" rows="6" placeholder="請輸入您的訊息..." data-en="Type your message..."></textarea>
-            <button type="submit" class="btn" data-en="Submit" data-zh="送出">送出</button>
-        </form>
-    </section>
-
-    <footer>
-        <span data-en="&copy; 2025 PhotoAcoustic Sense. All rights reserved." data-zh="&copy; 2025 PhotoAcoustic Sense. 版權所有。">&copy; 2025 PhotoAcoustic Sense. 版權所有。</span>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        AOS.init();
-        (function() { emailjs.init("service_ny95zid"); })();
-        document.getElementById("contact-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            emailjs.sendForm("service_ny95zid", "template_default", this).then(function(response) {
-                alert("訊息已送出，感謝聯絡我們！");
-            }, function(error) {
-                alert("發送失敗，請稍後再試。\n" + JSON.stringify(error));
-            });
-        });
-        function toggleLanguage() {
-            document.querySelectorAll("[data-en]").forEach(el => {
-                const isEnglish = el.textContent.trim() === el.dataset.zh;
-                el.textContent = isEnglish ? el.dataset.en : el.dataset.zh;
-            });
+        <input type="text" id="chat-input" placeholder="輸入你的問題..." style="width:100%; padding:8px; border-radius:5px; border:none; margin-top:10px; background:#22252e; color:white;">
+        <button onclick="sendChat()" style="margin-top:5px; width:100%; padding:8px; background:#66ccff; color:#0f1116; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">送出</button>
+    </div>
+</div>
+<script>
+function toggleChat() {
+    const chat = document.getElementById('chat-window');
+    chat.style.display = chat.style.display === 'none' ? 'block' : 'none';
+}
+function sendChat() {
+    const input = document.getElementById('chat-input');
+    const log = document.getElementById('chat-log');
+    const text = input.value.trim();
+    if (!text) return;
+    log.innerHTML += `<div>你：${text}</div>`;
+    input.value = '';
+    setTimeout(() => {
+        let reply = '';
+        if (/光聲|photoacoustic/.test(text)) {
+            reply = '光聲技術是透過光照產生聲音震動的超酷技術呢～♥ 不過你這樣問我…我可是有點害羞呢！';
+        } else if (/用途|做什麼/.test(text)) {
+            reply = '你是想知道它的應用嗎？像是人工耳膜、聲音成像、甚至是非侵入式檢測都有唷！哼～不錯嘛♥';
+        } else {
+            reply = '這問題嘛…我暫時還想不到欸 >///< 要不要換個問法？';
         }
-    </script>
+        log.innerHTML += `<div>👾：${reply}</div>`;
+        log.scrollTop = log.scrollHeight;
+    }, 600);
+}
+</script>
+
+<section id="contact" data-aos="fade-up">
+    <h2 data-en="Contact Us" data-zh="聯絡我們">聯絡我們</h2>
+    <form id="contact-form">
+        <input type="text" name="user_name" placeholder="您的姓名" data-en="Your Name" required>
+        <input type="email" name="user_email" placeholder="電子信箱" data-en="Email Address" required>
+        <textarea name="message" rows="6" placeholder="請輸入您的訊息..." data-en="Type your message..."></textarea>
+        <button type="submit" class="btn" data-en="Submit" data-zh="送出">送出</button>
+    </form>
+</section>
+<footer>
+    <span data-en="&copy; 2025 PhotoAcoustic Sense. All rights reserved." data-zh="&copy; 2025 PhotoAcoustic Sense. 版權所有。">&copy; 2025 PhotoAcoustic Sense. 版權所有。</span>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init();
+    (function() { emailjs.init("service_ny95zid"); })();
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        emailjs.sendForm("service_ny95zid", "template_default", this).then(function(response) {
+            alert("訊息已送出，感謝聯絡我們！");
+        }, function(error) {
+            alert("發送失敗，請稍後再試。\n" + JSON.stringify(error));
+        });
+    });
+    function toggleLanguage() {
+        document.querySelectorAll("[data-en]").forEach(el => {
+            const isEnglish = el.textContent.trim() === el.dataset.zh;
+            el.textContent = isEnglish ? el.dataset.en : el.dataset.zh;
+        });
+    }
+</script>
 </body>
 </html>
