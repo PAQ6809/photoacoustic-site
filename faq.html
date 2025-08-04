@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PhotoAcoustic 系統｜常見問答</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4129/4129570.png"/>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html {
+            font-family: "Noto Sans TC", sans-serif;
+            background-color: #0d1130;
+            color: #f5f5f5;
+            scroll-behavior: smooth;
+        }
+        nav { display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; background-color:#1c2331; position:fixed; width:100%; z-index:1000; box-shadow:0 2px 8px rgba(0,0,0,0.3); }
+        nav h2 { color:#4db3e6; }
+        nav ul { display:flex; list-style:none; gap:2rem; }
+        nav ul li a, nav ul li button { text-decoration:none; color:#e0e0e0; font-weight:500; background:none; border:none; cursor:pointer; transition:color 0.3s ease; }
+        nav ul li a:hover, nav ul li button:hover { color:#4db3e6; }
+        section { padding:6rem 2rem; max-width:1000px; margin:auto; }
+        .hero { background: linear-gradient(to right,#1e2749,#142b4f); display:flex; justify-content:center; align-items:center; height:60vh; text-align:center; padding:0 1rem; margin-top:60px; }
+        .hero-content h1 { font-size:2.5rem; margin-bottom:1rem; color:#4db3e6; }
+        .hero-content p { font-size:1.2rem; color:#cccccc; }
+        h2 { color:#4db3e6; margin-bottom:1rem; }
+        .faq-list { display:flex; flex-direction:column; gap:1rem; }
+        details { background-color:#1c2331; padding:1rem 1.5rem; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.3); }
+        summary { font-weight:bold; cursor:pointer; color:#4db3e6; }
+        details p { margin-top:0.5rem; color:#cccccc; line-height:1.6; }
+        form { display:flex; flex-direction:column; gap:1rem; }
+        input, textarea { padding:0.75rem; border-radius:5px; border:none; background-color:#222b45; color:#f5f5f5; font-size:1rem; }
+        input:focus, textarea:focus { outline:2px solid #4db3e6; }
+        footer { text-align:center; padding:2rem; background-color:#1c2331; color:#888; }
+        @media (max-width:768px) {
+            nav ul { flex-direction:column; gap:1rem; background-color:#1c2331; padding:1rem; position:absolute; top:60px; right:10px; border-radius:8px; }
+            section { padding:4rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <h2 data-en="PhotoAcoustic System" data-zh="PhotoAcoustic 系統">PhotoAcoustic 系統</h2>
+    <ul>
+        <li><a href="index.html#home" data-en="Home" data-zh="首頁">首頁</a></li>
+        <li><a href="index.html#features" data-en="Highlights" data-zh="亮點">亮點</a></li>
+        <li><a href="about.html" data-en="About" data-zh="關於我們">關於我們</a></li>
+        <li><a href="tech.html" data-en="Technology" data-zh="技術原理">技術原理</a></li>
+        <li><a href="blog.html" data-en="Blog" data-zh="最新消息">最新消息</a></li>
+        <li><a href="faq.html" data-en="FAQ" data-zh="常見問答">常見問答</a></li>
+        <li><a href="index.html#product" data-en="Products" data-zh="產品介紹">產品介紹</a></li>
+        <li><a href="index.html#contact" data-en="Contact" data-zh="聯絡我們">聯絡我們</a></li>
+        <li><button onclick="toggleLanguage()" class="btn secondary">EN / 中</button></li>
+    </ul>
+</nav>
+
+<header class="hero" id="faq">
+    <div class="hero-content" data-aos="fade-up">
+        <h1 data-en="Frequently Asked Questions" data-zh="常見問答">常見問答</h1>
+        <p data-en="Answers to common questions about our system" data-zh="解答您對本系統的常見疑問">解答您對本系統的常見疑問</p>
+    </div>
+</header>
+
+<section id="faq-section" data-aos="fade-up">
+    <h2 data-en="Questions & Answers" data-zh="問題與解答">問題與解答</h2>
+    <div class="faq-list">
+        <details>
+            <summary data-en="What is photoacoustic technology?" data-zh="什麼是光聲技術？">什麼是光聲技術？</summary>
+            <p data-en="Photoacoustic technology converts absorbed optical energy into acoustic waves, allowing high-resolution imaging even in optically diffusive tissues." data-zh="光聲技術是將光能吸收後轉換成聲波的技術，即使在光散射的組織中也能提供高解析度成像。">光聲技術是將光能吸收後轉換成聲波的技術，即使在光散射的組織中也能提供高解析度成像。</p>
+        </details>
+        <details>
+            <summary data-en="What components does a photoacoustic system need?" data-zh="光聲系統需要哪些主要組件？">光聲系統需要哪些主要組件？</summary>
+            <p data-en="A typical system includes a pulsed energy source (often a nanosecond laser), optical delivery optics, acoustic detectors such as ultrasound transducers, and a microprocessor for data acquisition and image reconstruction." data-zh="典型的系統包含脈衝能源（常為奈秒雷射）、光學傳輸元件、超聲換能器等聲學探測器，以及進行資料擷取與影像重建的處理器。">典型的系統包含脈衝能源（常為奈秒雷射）、光學傳輸元件、超聲換能器等聲學探測器，以及進行資料擷取與影像重建的處理器。</p>
+        </details>
+        <details>
+            <summary data-en="Can the system provide real-time imaging?" data-zh="系統能進行即時成像嗎？">系統能進行即時成像嗎？</summary>
+            <p data-en="Yes, by using high pulse repetition rates and array-based ultrasound transducers, modern systems can achieve real-time imaging with beamforming algorithms." data-zh="可以，透過高重複脈衝率與陣列式超聲換能器，搭配波束成形演算法，即可達到即時成像。">可以，透過高重複脈衝率與陣列式超聲換能器，搭配波束成形演算法，即可達到即時成像。</p>
+        </details>
+        <details>
+            <summary data-en="What are potential applications?" data-zh="有哪些應用場景？">有哪些應用場景？</summary>
+            <p data-en="Photoacoustic technology is used in vascular imaging, functional brain imaging, tumor detection, and can be applied to wearable devices like artificial eardrums." data-zh="光聲技術應用於血管成像、功能性腦成像、腫瘤檢測，也能開發成人工耳膜等可穿戴裝置。">光聲技術應用於血管成像、功能性腦成像、腫瘤檢測，也能開發成人工耳膜等可穿戴裝置。</p>
+        </details>
+    </div>
+</section>
+
+<section id="contact" data-aos="fade-up">
+    <h2 data-en="Contact Us" data-zh="聯絡我們">聯絡我們</h2>
+    <form id="contact-form">
+        <input type="text" name="user_name" placeholder="您的姓名" data-en="Your Name" required>
+        <input type="email" name="user_email" placeholder="電子信箱" data-en="Email Address" required>
+        <textarea name="message" rows="6" placeholder="請輸入您的訊息..." data-en="Type your message..."></textarea>
+        <button type="submit" class="btn" data-en="Submit" data-zh="送出">送出</button>
+    </form>
+</section>
+
+<footer>
+    <span data-en="&copy; 2025 PhotoAcoustic System. All rights reserved." data-zh="&copy; 2025 PhotoAcoustic 系統. 版權所有。">&copy; 2025 PhotoAcoustic 系統. 版權所有。</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init();
+    (function() { emailjs.init("service_ny95zid"); })();
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        emailjs.sendForm("service_ny95zid", "template_default", this).then(function(response) {
+            alert("訊息已送出，感謝聯絡我們！");
+        }, function(error) {
+            alert("發送失敗，請稍後再試。\n" + JSON.stringify(error));
+        });
+    });
+    function toggleLanguage() {
+        document.querySelectorAll("[data-en]").forEach(el => {
+            const isEnglish = el.textContent.trim() === el.getAttribute('data-zh');
+            el.textContent = isEnglish ? el.getAttribute('data-en') : el.getAttribute('data-zh');
+        });
+    }
+</script>
+</body>
+</html>

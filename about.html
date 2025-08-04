@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PhotoAcoustic 系統｜關於我們</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4129/4129570.png"/>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+    <!-- 重用 index.html 中的樣式 -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html {
+            font-family: "Noto Sans TC", sans-serif;
+            background-color: #0d1130;
+            color: #f5f5f5;
+            scroll-behavior: smooth;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #1c2331;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        nav h2 { color: #4db3e6; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav ul li a, nav ul li button {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-weight: 500;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover, nav ul li button:hover { color: #4db3e6; }
+        section { padding: 6rem 2rem; max-width: 1000px; margin: auto; }
+        .hero {
+            background: linear-gradient(to right, #1e2749, #142b4f);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+            text-align: center;
+            padding: 0 1rem;
+            margin-top: 60px;
+        }
+        .hero-content h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #4db3e6; }
+        .hero-content p { font-size: 1.25rem; color: #cccccc; }
+        h2 { color: #4db3e6; margin-bottom: 1rem; }
+        p { line-height: 1.6; margin-bottom: 1rem; }
+        /* Form and footer reuse */
+        form { display: flex; flex-direction: column; gap: 1rem; }
+        input, textarea {
+            padding: 0.75rem;
+            border-radius: 5px;
+            border: none;
+            background-color: #222b45;
+            color: #f5f5f5;
+            font-size: 1rem;
+        }
+        input:focus, textarea:focus { outline: 2px solid #4db3e6; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #1c2331;
+            color: #888;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                background-color: #1c2331;
+                padding: 1rem;
+                position: absolute;
+                top: 60px;
+                right: 10px;
+                border-radius: 8px;
+            }
+            section { padding: 4rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <h2 data-en="PhotoAcoustic System" data-zh="PhotoAcoustic 系統">PhotoAcoustic 系統</h2>
+    <ul>
+        <li><a href="index.html#home" data-en="Home" data-zh="首頁">首頁</a></li>
+        <li><a href="index.html#features" data-en="Highlights" data-zh="亮點">亮點</a></li>
+        <li><a href="about.html" data-en="About" data-zh="關於我們">關於我們</a></li>
+        <li><a href="tech.html" data-en="Technology" data-zh="技術原理">技術原理</a></li>
+        <li><a href="blog.html" data-en="Blog" data-zh="最新消息">最新消息</a></li>
+        <li><a href="faq.html" data-en="FAQ" data-zh="常見問答">常見問答</a></li>
+        <li><a href="index.html#product" data-en="Products" data-zh="產品介紹">產品介紹</a></li>
+        <li><a href="index.html#contact" data-en="Contact" data-zh="聯絡我們">聯絡我們</a></li>
+        <li><button onclick="toggleLanguage()" class="btn secondary">EN / 中</button></li>
+    </ul>
+</nav>
+
+<header class="hero" id="about">
+    <div class="hero-content" data-aos="fade-up">
+        <h1 data-en="About Us" data-zh="關於我們">關於我們</h1>
+        <p data-en="Learn more about our mission and team" data-zh="了解我們的使命與團隊">了解我們的使命與團隊</p>
+    </div>
+</header>
+
+<section id="mission" data-aos="fade-up">
+    <h2 data-en="Our Mission" data-zh="我們的使命">我們的使命</h2>
+    <p data-en="We aim to build accessible and modular photoacoustic systems that accelerate research and innovation in biomedical sensing." data-zh="我們致力於打造平易近人且模組化的光聲系統，加速生醫感測的研究與創新。">我們致力於打造平易近人且模組化的光聲系統，加速生醫感測的研究與創新。</p>
+    <h2 data-en="Our Story" data-zh="我們的故事">我們的故事</h2>
+    <p data-en="Founded by students passionate about photonics and acoustics, our project started as a prototype and evolved into an open platform for learning and collaboration." data-zh="我們由一群熱愛光電與聲學的學生所創立，從一個原型開始，逐步發展成一個學習與協作的開放平台。">我們由一群熱愛光電與聲學的學生所創立，從一個原型開始，逐步發展成一個學習與協作的開放平台。</p>
+    <h2 data-en="Team" data-zh="團隊介紹">團隊介紹</h2>
+    <p data-en="Our core team is currently led by Chen Pin-Ren, a student at National Kaohsiung Normal University majoring in Electrical Engineering." data-zh="我們的核心成員目前由高師大電機工程學系的學生陳品任領導。">我們的核心成員目前由高師大電機工程學系的學生陳品任領導。</p>
+</section>
+
+<!-- 保留聯絡表單方便使用者諮詢 -->
+<section id="contact" data-aos="fade-up">
+    <h2 data-en="Contact Us" data-zh="聯絡我們">聯絡我們</h2>
+    <form id="contact-form">
+        <input type="text" name="user_name" placeholder="您的姓名" data-en="Your Name" required>
+        <input type="email" name="user_email" placeholder="電子信箱" data-en="Email Address" required>
+        <textarea name="message" rows="6" placeholder="請輸入您的訊息..." data-en="Type your message..."></textarea>
+        <button type="submit" class="btn" data-en="Submit" data-zh="送出">送出</button>
+    </form>
+</section>
+
+<footer>
+    <span data-en="&copy; 2025 PhotoAcoustic System. All rights reserved." data-zh="&copy; 2025 PhotoAcoustic 系統. 版權所有。">&copy; 2025 PhotoAcoustic 系統. 版權所有。</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init();
+    (function() { emailjs.init("service_ny95zid"); })();
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        emailjs.sendForm("service_ny95zid", "template_default", this).then(function(response) {
+            alert("訊息已送出，感謝聯絡我們！");
+        }, function(error) {
+            alert("發送失敗，請稍後再試。\n" + JSON.stringify(error));
+        });
+    });
+    function toggleLanguage() {
+        document.querySelectorAll("[data-en]").forEach(el => {
+            const isEnglish = el.textContent.trim() === el.getAttribute('data-zh');
+            el.textContent = isEnglish ? el.getAttribute('data-en') : el.getAttribute('data-zh');
+        });
+    }
+</script>
+</body>
+</html>
