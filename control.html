@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PhotoAcoustic 系統｜控制介面</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4129/4129570.png"/>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+    <!-- 基礎樣式，沿用 index.html 深色配色 -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html {
+            font-family: "Noto Sans TC", sans-serif;
+            background-color: #0d1130;
+            color: #f5f5f5;
+            scroll-behavior: smooth;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #1c2331;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        nav h2 { color: #4db3e6; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav ul li a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover { color: #4db3e6; }
+        header.hero {
+            background: linear-gradient(to right, #1e2749, #142b4f);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+            text-align: center;
+            padding: 0 1rem;
+        }
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #4db3e6;
+        }
+        .hero-content p { color: #cccccc; }
+        section {
+            padding: 6rem 2rem;
+            max-width: 1000px;
+            margin: auto;
+        }
+        h2 {
+            margin-bottom: 1rem;
+            color: #4db3e6;
+        }
+        label { display: block; margin-bottom: 0.5rem; color: #cccccc; }
+        input[type=range] {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+        .btn {
+            padding: 0.6rem 1.2rem;
+            margin-right: 0.5rem;
+            background-color: #4db3e6;
+            color: #0d1130;
+            font-weight: bold;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .btn:hover { background-color: #3a9dc4; }
+        .btn.secondary {
+            background-color: transparent;
+            border: 2px solid #4db3e6;
+            color: #4db3e6;
+        }
+        .btn.secondary:hover {
+            background-color: #4db3e6;
+            color: #0d1130;
+        }
+        /* Simple contact styling reused from other pages */
+        form { display: flex; flex-direction: column; gap: 1rem; }
+        input, textarea {
+            padding: 0.75rem;
+            border-radius: 5px;
+            border: none;
+            background-color: #222b45;
+            color: #f5f5f5;
+            font-size: 1rem;
+        }
+        input:focus, textarea:focus {
+            outline: 2px solid #4db3e6;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #1c2331;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h2 data-en="PhotoAcoustic System" data-zh="PhotoAcoustic 系統">PhotoAcoustic 系統</h2>
+        <ul>
+            <li><a href="index.html#home" data-en="Home" data-zh="首頁">首頁</a></li>
+            <li><a href="index.html#features" data-en="Highlights" data-zh="亮點">亮點</a></li>
+            <li><a href="about.html" data-en="About" data-zh="關於我們">關於我們</a></li>
+            <li><a href="tech.html" data-en="Technology" data-zh="技術原理">技術原理</a></li>
+            <li><a href="blog.html" data-en="Blog" data-zh="最新消息">最新消息</a></li>
+            <li><a href="faq.html" data-en="FAQ" data-zh="常見問答">常見問答</a></li>
+            <li><a href="index.html#product" data-en="Products" data-zh="產品介紹">產品介紹</a></li>
+            <li><a href="index.html#contact" data-en="Contact" data-zh="聯絡我們">聯絡我們</a></li>
+            <li><button onclick="toggleLanguage()" class="btn secondary">EN / 中</button></li>
+        </ul>
+    </nav>
+    <header class="hero" id="control">
+        <div class="hero-content" data-aos="fade-up">
+            <h1 data-en="System Control" data-zh="系統控制介面">系統控制介面</h1>
+            <p data-en="Demo control panel for laser and acquisition" data-zh="雷射與資料擷取控制示範">雷射與資料擷取控制示範</p>
+        </div>
+    </header>
+    <section id="control-panel" data-aos="fade-up">
+        <h2 data-en="Control Panel" data-zh="控制面板">控制面板</h2>
+        <label for="laser-power" data-en="Laser Power" data-zh="雷射功率">雷射功率</label>
+        <input type="range" id="laser-power" name="power" min="0" max="100" value="50" oninput="updatePowerLabel(this.value)">
+        <span id="power-label">50%</span>
+        <div style="margin-top:1rem;">
+            <button class="btn" onclick="startAcquisition()" data-en="Start Acquisition" data-zh="開始擷取">開始擷取</button>
+            <button class="btn secondary" onclick="stopAcquisition()" data-en="Stop Acquisition" data-zh="停止擷取">停止擷取</button>
+        </div>
+        <p style="margin-top:1rem;" data-en="Note: This interface is a prototype and does not control actual hardware." data-zh="此介面為原型示範，尚未連接實際硬體。">此介面為原型示範，尚未連接實際硬體。</p>
+    </section>
+    <!-- 聯絡表單 -->
+    <section id="contact" data-aos="fade-up">
+        <h2 data-en="Contact Us" data-zh="聯絡我們">聯絡我們</h2>
+        <form id="contact-form">
+            <input type="text" name="user_name" placeholder="姓名 / Name" required />
+            <input type="email" name="user_email" placeholder="電子郵件 / Email" required />
+            <textarea name="message" rows="4" placeholder="訊息 / Message" required></textarea>
+            <button type="submit" class="btn">送出</button>
+        </form>
+    </section>
+    <footer>&copy; 2025 PhotoAcoustic System. All rights reserved.</footer>
+    <script>
+        function updatePowerLabel(val) {
+            document.getElementById('power-label').textContent = val + '%';
+        }
+        function startAcquisition() {
+            alert('Starting acquisition... (demo)');
+        }
+        function stopAcquisition() {
+            alert('Stopping acquisition... (demo)');
+        }
+    </script>
+    <!-- 引入語言切換等共用腳本，如無可省略 -->
+    <script src="script.js"></script>
+</body>
+</html>

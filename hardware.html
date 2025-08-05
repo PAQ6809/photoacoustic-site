@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PhotoAcoustic 系統｜硬體模組</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4129/4129570.png"/>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html {
+            font-family: "Noto Sans TC", sans-serif;
+            background-color: #0d1130;
+            color: #f5f5f5;
+            scroll-behavior: smooth;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #1c2331;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        nav h2 { color: #4db3e6; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav ul li a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover { color: #4db3e6; }
+        section {
+            padding: 6rem 2rem;
+            max-width: 1000px;
+            margin: auto;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4db3e6;
+        }
+        h2 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            color: #4db3e6;
+        }
+        p, li { line-height: 1.6; color: #cccccc; }
+        ul { margin-left: 1.5rem; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #1c2331;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h2 data-en="PhotoAcoustic System" data-zh="PhotoAcoustic 系統">PhotoAcoustic 系統</h2>
+        <ul>
+            <li><a href="index.html#home" data-en="Home" data-zh="首頁">首頁</a></li>
+            <li><a href="index.html#features" data-en="Highlights" data-zh="亮點">亮點</a></li>
+            <li><a href="about.html" data-en="About" data-zh="關於我們">關於我們</a></li>
+            <li><a href="tech.html" data-en="Technology" data-zh="技術原理">技術原理</a></li>
+            <li><a href="blog.html" data-en="Blog" data-zh="最新消息">最新消息</a></li>
+            <li><a href="faq.html" data-en="FAQ" data-zh="常見問答">常見問答</a></li>
+            <li><a href="index.html#product" data-en="Products" data-zh="產品介紹">產品介紹</a></li>
+            <li><a href="index.html#contact" data-en="Contact" data-zh="聯絡我們">聯絡我們</a></li>
+            <li><a href="control.html" data-en="Control" data-zh="控制介面">控制介面</a></li>
+            <li><button onclick="toggleLanguage()" class="btn secondary">EN / 中</button></li>
+        </ul>
+    </nav>
+    <section style="padding-top:100px;">
+        <h1 data-en="Hardware Modules" data-zh="硬體模組">硬體模組</h1>
+        <p data-en="Our photoacoustic system is built from modular hardware, allowing easy customisation and experimentation." data-zh="我們的光聲系統採用模組化硬體設計，方便客製與實驗。">我們的光聲系統採用模組化硬體設計，方便客製與實驗。</p>
+        <h2 data-en="Light Source Module" data-zh="光源模組">光源模組</h2>
+        <p data-en="Provides nanosecond pulses of light to excite the target. Options include high‑energy Q‑switched lasers and portable pulsed laser diodes or LEDs【293528633092022†L220-L231】." data-zh="提供奈秒脈衝光以激發目標，可選用高能量 Q‑switched 雷射或可攜式脈衝雷射二極管 / LED【293528633092022†L220-L231】。">提供奈秒脈衝光以激發目標，可選用高能量 Q‑switched 雷射或可攜式脈衝雷射二極管 / LED【293528633092022†L220-L231】。</p>
+        <h2 data-en="Light Delivery & Scanning" data-zh="光傳輸與掃描">光傳輸與掃描</h2>
+        <p data-en="Delivers the excitation energy using mirrors, prisms, fibres and scanning devices. Galvanometer or MEMS mirrors can steer the beam across the sample【293528633092022†L242-L248】." data-zh="透過鏡片、稜鏡、光纖及掃描裝置傳送激發能量；振鏡或 MEMS 鏡可將光束掃描至樣本各處【293528633092022†L242-L248】。">透過鏡片、稜鏡、光纖及掃描裝置傳送激發能量；振鏡或 MEMS 鏡可將光束掃描至樣本各處【293528633092022†L242-L248】。</p>
+        <h2 data-en="Ultrasound Detection" data-zh="超音波檢測">超音波檢測</h2>
+        <p data-en="Detects the generated acoustic waves. Choose from PZT transducers for cost‑effective sensitivity, PVDF films for flexibility, or CMUT arrays for broadband response【293528633092022†L250-L263】." data-zh="偵測產生的聲波，可選擇具經濟效益的 PZT 換能器、柔性的 PVDF 薄膜，或寬頻響應的 CMUT 陣列【293528633092022†L250-L263】。">偵測產生的聲波，可選擇具經濟效益的 PZT 換能器、柔性的 PVDF 薄膜，或寬頻響應的 CMUT 陣列【293528633092022†L250-L263】。</p>
+        <h2 data-en="Processing Unit" data-zh="訊號處理單元">訊號處理單元</h2>
+        <p data-en="Digitises the signals and reconstructs images using delay‑and‑sum, filtered back projection or model‑based algorithms. A microcontroller or embedded PC can handle acquisition and control【293528633092022†L266-L274】." data-zh="將訊號數位化並透過延遲求和、反投影或模型基重建演算法生成影像，可由微控制器或嵌入式電腦執行擷取與控制【293528633092022†L266-L274】。">將訊號數位化並透過延遲求和、反投影或模型基重建演算法生成影像，可由微控制器或嵌入式電腦執行擷取與控制【293528633092022†L266-L274】。</p>
+        <h2 data-en="Open‑Source Kit" data-zh="開源套件">開源套件</h2>
+        <p data-en="We aim to publish 3D‑printable designs and wiring diagrams for each module. Researchers and students will be able to assemble and customise the system using off‑the‑shelf components." data-zh="我們計劃公開各模組的 3D 列印設計與接線圖，讓研究者和學生可利用市售零件自行組裝與客製。">我們計劃公開各模組的 3D 列印設計與接線圖，讓研究者和學生可利用市售零件自行組裝與客製。</p>
+    </section>
+    <footer>&copy; 2025 PhotoAcoustic System. All rights reserved.</footer>
+    <script src="script.js"></script>
+</body>
+</html>
