@@ -3,154 +3,139 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>PhotoAcoustic 系統｜技術原理</title>
-    <!-- favicon and external libraries -->
+    <title>技術原理 - PhotoAcoustic System</title>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4129/4129570.png"/>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
-    <!-- 重用 index.html 中的樣式，保持深色科技感 -->
     <style>
-        /* Reset and base styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html {
-            font-family: "Noto Sans TC", sans-serif;
-            background-color: #0d1130;
-            color: #f5f5f5;
-            scroll-behavior: smooth;
+        :root {
+            --primary: #0056b3;
+            --text: #2c2c2c;
+            --muted: #5e6472;
+            --bg: #f5f7fb;
         }
-        /* Navigation bar */
-        nav {
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Noto Sans TC", system-ui, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+        header {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .topbar {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            background-color: #1c2331;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
-        nav h2 { color: #4db3e6; }
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        nav ul li a {
+        .topbar h1 { color: var(--primary); font-size: 1.3rem; }
+        .topbar nav a {
+            margin-left: 1rem;
+            color: var(--muted);
             text-decoration: none;
-            color: #e0e0e0;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-weight: 600;
         }
-        nav ul li a:hover { color: #4db3e6; }
-        /* Section styling */
-        section {
-            padding: 6rem 2rem;
-            max-width: 1000px;
-            margin: auto;
+        .topbar nav a:hover { color: var(--primary); }
+        main { max-width: 960px; margin: 2rem auto; padding: 0 1.5rem 3rem; }
+        h2 { color: var(--primary); margin: 1.5rem 0 0.75rem; }
+        p { margin-bottom: 1rem; }
+        ol { padding-left: 1.2rem; }
+        .reference-item {
+            margin-bottom: 1.2rem;
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #4db3e6;
+        .reference-title { font-weight: 800; font-size: 1.05rem; color: var(--text); }
+        .reference-summary { font-size: 0.95rem; color: var(--muted); margin-top: 6px; }
+        .lede {
+            background: linear-gradient(135deg, #e6f1ff, #f8fbff);
+            padding: 1.25rem 1rem;
+            border-radius: 12px;
+            border: 1px solid #d7e6ff;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
         }
-        h2 {
-            margin-top: 2rem;
-            margin-bottom: 0.5rem;
-            color: #4db3e6;
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+            font-size: 0.9rem;
         }
-        p, li {
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            color: #cccccc;
+        @media (max-width: 720px) {
+            .topbar { flex-direction: column; align-items: flex-start; }
+            .topbar nav { margin-top: 0.5rem; display: flex; flex-wrap: wrap; }
+            .topbar nav a { margin: 0.25rem 0.75rem 0 0; }
         }
-        ul { margin-left: 1.5rem; }
     </style>
 </head>
 <body>
-    <nav>
-        <h2><a href="index.html" style="text-decoration:none; color:#4db3e6;">PhotoAcoustic System</a></h2>
-        <ul>
-            <li><a href="index.html">首頁</a></li>
-            <li><a href="tech.html">技術原理</a></li>
-            <li><a href="index.html#product">產品介紹</a></li>
-            <li><a href="index.html#contact">聯絡我們</a></li>
-            <li><a href="about.html">關於我們</a></li>
-            <li><a href="blog.html">最新消息</a></li>
-            <li><a href="faq.html">常見問答</a></li>
-        </ul>
-    </nav>
-    <section style="padding-top:100px;">
-        <h1>光聲效應技術原理解說</h1>
-        <p>
-            當脈衝雷射照射生物組織時，吸收的光能會轉換為熱能，產生快速的
-            熱彈性膨脹；這種膨脹會產生超音波波動，沿著組織傳播並由換能器
-            接收，經過訊號處理後重建成影像【433029314840898†L179-L194】。
-        </p>
-        <h2>系統主要組件</h2>
-        <p>我們的光聲系統由多個模組協同運作：</p>
-        <ul>
-            <li><strong>光源 (Excitation Sources)</strong>：傳統系統使用
-                奈秒可調雷射（如 Q‑switched Nd:YAG 或 OPO），提供高能量脈衝以獲得
-                深層成像。近年脈衝雷射二極管與 LED 技術進步，能產生高重複率奈秒脈衝，
-                使系統更輕便且成本更低【293528633092022†L220-L231】。</li>
-            <li><strong>光傳輸與掃描系統</strong>：雷射能量需藉由
-                鏡片、稜鏡、聚焦透鏡或光纖傳輸至目標；掃描裝置如振鏡或 MEMS 鏡可精確掃描光束【293528633092022†L242-L248】。</li>
-            <li><strong>超音波檢測器</strong>：光聲訊號透過換能器接收。常見 PZT 壓電換能器具備高靈敏度且成本低廉；
-                PVDF 高分子換能器具有柔性與高靈敏度；CMUT 微機電換能器提供寬頻響應，但需處理串音等問題【293528633092022†L250-L263】。</li>
-            <li><strong>訊號處理與影像重建</strong>：資料擷取單元負責數位化訊號，並利用反投影、延遲求和或模型基重建演算法生成影像【293528633092022†L266-L274】。先進的機器學習方法可進一步提升影像品質。</li>
-        </ul>
+    <header>
+        <div class="topbar">
+            <h1>PhotoAcoustic System</h1>
+            <nav>
+                <a href="index.html">首頁</a>
+                <a href="tech.html">技術原理</a>
+                <a href="index.html#product">產品介紹</a>
+                <a href="index.html#contact">聯絡我們</a>
+            </nav>
+        </div>
+    </header>
 
-        <!-- 新增掃描與陣列技術段落 -->
-        <h2>掃描與陣列技術</h2>
-        <p>
-            光聲影像可以透過不同的掃描策略與探測器陣列來取得高速、高解析度的
-            空間資訊。例如光聲顯微鏡常用<b>逐點掃描</b>，物體在橫截面上進行
-            光束掃描並以飛行時間計算深度；受限於雷射的重複率，每個位置需觸發
-            一次脈衝，但若搭配高重複率雷射（例如 100 kHz）與浸水式 MEMS 掃描鏡，
-            在 3 mm 掃描範圍內可達到 400 Hz 的 B 掃描速度【606326766484720†L470-L480】。
-            此外，<b>光聲斷層掃描（PACT）</b>利用線型、半環、全環或半球形超音波陣列
-            同時從多個角度接收訊號，可以實現每秒 8 張影像、<200 µm 的解析度
-            【606326766484720†L551-L569】。
-            <b>光聲內視鏡（PAE）</b>則將光源與換能器迷你化，使用旋轉鏡實現環形掃描，
-            在每個角度順序發射不同波長的雷射並用同一換能器接收回波；此方式
-            在兔子食道實驗中達到 270° 視場和超過 5 mm 的成像深度【606326766484720†L590-L618】。
-        </p>
+    <main>
+        <div class="lede">
+            <h2>光聲效應原理簡介</h2>
+            <p>本平台的核心技術基於「光聲效應 (Photoacoustic Effect)」，簡單來說，就是「光進聲出」：</p>
+            <ol>
+                <li><strong>脈衝雷射照射：</strong> 短脈衝雷射照射目標組織（例如耳膜）。</li>
+                <li><strong>熱膨脹：</strong> 組織吸收光能後瞬間加熱並產生微小的熱膨脹。</li>
+                <li><strong>產生超音波：</strong> 快速膨脹與收縮產生寬頻超音波訊號。</li>
+                <li><strong>訊號接收與分析：</strong> 硬體模組接收這些訊號，並透過演算法進行即時分析。</li>
+            </ol>
+            <p>相較於純光學成像（穿透深度淺）或純超音波成像（對比度較低），光聲技術結合了<strong>高光學對比度</strong>與<strong>深層聲學穿透力</strong>，非常適合檢測耳膜後方積水或生物膜。</p>
+        </div>
 
-        <h2>其他檢測方式</h2>
-        <p>
-            除了壓電換能器外，光聲訊號也可以用<b>全光學檢測</b>來讀取。例如
-            Mach–Zehnder 干涉儀與相位差顯微鏡能測量光聲誘導的折射率變化，
-            而光學共振式感測器如微環共振器或法布里–珀羅腔體則直接量測壓力
-            對共振波長的影響。文獻指出法布里–珀羅探測器在靈敏度上優於
-            其他全光學方法，是傳統壓電換能器之外的重要選項【606326766484720†L621-L687】。
-        </p>
-        <h2>產品功能與創新</h2>
-        <ul>
-            <li><strong>模組化設計</strong>：硬體分為光源、光傳輸、換能器與訊號處理模組，方便更換不同雷射或探測器，
-                適合教學與研究。</li>
-            <li><strong>可攜式光源</strong>：採用高重複率的脈衝雷射二極管或 LED 光源，支援多波長成像，分析各種組織的光吸收特性。</li>
-            <li><strong>即時成像</strong>：支援快速資料擷取及延遲求和影像重建，提供即時顯像；未來將整合 GPU 加速與 AI 演算法以提升速度與解析度。</li>
-            <li><strong>光聲與超音融合</strong>：預留同步介面，可與超音波模組整合，實現雙模影像，取得光學對比與結構資訊。</li>
-            <li><strong>開放原始碼與教育性質</strong>：以 Python 程式控制並提供範例，讓學生及研究者快速上手並理解光聲效應。</li>
-            <li><strong>專利準備</strong>：設計過程考慮關鍵技術創新與系統架構，便於後續依台灣專利規範進行申請。</li>
-        </ul>
-        <h2>應用領域</h2>
-        <p>
-            光聲影像結合光學對比與超音解析度，適用於腫瘤早期檢測、心血管病變評估、
-            腦部血流及氧氣監測、皮膚病診斷以及眼科檢查等生醫應用【433029314840898†L216-L241】。
-        </p>
-        <h2>未來展望</h2>
-        <ul>
-            <li>持續研發可調波長光源與新型對比劑，增強功能與分子影像能力【433029314840898†L245-L252】。</li>
-            <li>創新換能器材料與陣列設計，提升靈敏度與解析度【293528633092022†L250-L263】。</li>
-            <li>發展迷你化、可攜式裝置，推廣於臨床與資源有限環境【433029314840898†L272-L275】。</li>
-            <li>結合人工智慧與多模態影像，提高診斷準確度與自動化【433029314840898†L256-L260】【433029314840898†L276-L279】。</li>
-        </ul>
-        <p style="margin-top:2rem;">這些內容可根據最新研究成果與技術發展持續更新。</p>
-    </section>
-    <footer style="text-align:center; padding:2rem;">&copy; 2025 PhotoAcoustic System. All rights reserved.</footer>
-    <!-- 引入腳本檔以支援 EmailJS 等功能；如無需可省略 -->
-    <script src="script.js"></script>
+        <section>
+            <h2>關鍵參考文獻與研究背景</h2>
+            <p>本系統的設計同時考量臨床需求、現有技術的不足與可實作的硬體方案，以下文獻為重要依據：</p>
+
+            <div class="reference-item">
+                <div class="reference-title">1. 臨床需求：中耳炎的非侵入式診斷</div>
+                <div><em>"Noninvasive depth-resolved optical measurements of the tympanic membrane and middle ear for differentiating otitis media"</em> (PMID: 25599652)</div>
+                <div class="reference-summary">
+                    <strong>研究重點：</strong> 指出傳統耳鏡難以觀察耳膜後方狀況，並探討以光學手段區分急性、慢性中耳炎與檢測生物膜的可行性，支持本系統「穿透耳膜進行深層檢測」的需求。
+                </div>
+            </div>
+
+            <div class="reference-item">
+                <div class="reference-title">2. 技術對比：聲學反射技術</div>
+                <div><em>"Acoustic reflectometry in the detection of middle ear effusion"</em></div>
+                <div class="reference-summary">
+                    <strong>研究重點：</strong> 單純使用聲波反射判斷中耳積水的技術。相較之下，本系統加入「光吸收」資訊，可提供更豐富的組織成分判讀（如區分膿液或清澈液體）。
+                </div>
+            </div>
+
+            <div class="reference-item">
+                <div class="reference-title">3. 硬體實現：仿生與微型化感測器</div>
+                <div><em>相關領域：Biomimetic Eardrum Sensors, Optical Ultrasound Sensors</em></div>
+                <div class="reference-summary">
+                    <strong>研究重點：</strong> 參考仿生耳膜與全光學超音波感測器，有助於維持高靈敏度並縮小模組體積，體現「模組化、可攜式」設計目標。
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 PhotoAcoustic 系統. 版權所有。
+    </footer>
 </body>
 </html>
