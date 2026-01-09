@@ -1,33 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact Us</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-en="Contact Us" data-zh="聯絡我們">聯絡我們</title>
+<style>
+  body { font-family: Arial, sans-serif; background-color: #111; color: #f5f5f5; margin: 0; line-height: 1.6; }
+  header, footer { background-color: #222; padding: 1rem; text-align: center; }
+  main { max-width: 900px; margin: 0 auto; padding: 2rem; }
+  h1 { font-size: 2rem; margin-bottom: 1rem; text-align: center; }
+  ul { list-style: none; padding: 0; }
+  li { margin-bottom: 0.5rem; }
+  label { display: block; margin-top: 1rem; }
+  input, textarea { width: 100%; padding: 0.5rem; margin-top: 0.25rem; background-color: #222; border: 1px solid #444; color: #f5f5f5; }
+  button { margin-top: 1rem; padding: 0.5rem 1rem; background-color: #444; color: #f5f5f5; border: none; cursor: pointer; }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Contact Us</h1>
-    </header>
-    <main>
-        <p>If you have any questions or comments, please reach out to us:</p>
-        <ul>
-            <li>Email: info@example.com</li>
-            <li>Address: 123 University Ave, City, Country</li>
-            <li>Social Media: add your social media links here.</li>
-        </ul>
-        <form>
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name"><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email"><br>
-            <label for="message">Message:</label><br>
-            <textarea id="message" name="message"></textarea><br>
-            <button type="submit">Submit</button>
-        </form>
-    </main>
-    <footer>
-        <p>&copy; 2026 Photoacoustic Research Group</p>
-    </footer>
+<header>
+  <h1 data-en="Contact Us" data-zh="聯絡我們">聯絡我們</h1>
+</header>
+<main>
+  <section>
+    <p data-en="We would love to hear from you. Whether you have questions, collaboration ideas or feedback, please get in touch via the following channels." data-zh="如果您有任何疑問、合作想法或意見，歡迎通過以下方式聯絡我們。"></p>
+    <ul>
+      <li data-en="Email: info@photoacoustic.dev" data-zh="電子郵件：info@photoacoustic.dev">電子郵件：info@photoacoustic.dev</li>
+      <li data-en="Address: 123 Research Ave, Tainan, Taiwan" data-zh="地址：臺灣台南市研究大道123號">地址：臺灣台南市研究大道123號</li>
+      <li data-en="Social: Follow us on GitHub and join our community." data-zh="社群：在 GitHub 上追蹤我們並加入社群。">社群：在 GitHub 上追蹤我們並加入社群。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 data-en="Send us a message" data-zh="發送訊息">發送訊息</h2>
+    <form>
+      <label data-en="Name" data-zh="姓名">姓名</label>
+      <input type="text" name="name" required>
+      <label data-en="Email" data-zh="電子郵件">電子郵件</label>
+      <input type="email" name="email" required>
+      <label data-en="Message" data-zh="訊息">訊息</label>
+      <textarea name="message" rows="5" required></textarea>
+      <button type="submit" data-en="Submit" data-zh="提交">提交</button>
+    </form>
+  </section>
+</main>
+<footer>
+  <p data-en="© 2026 Photoacoustic Research Group" data-zh="© 2026 光聲研究小組">© 2026 光聲研究小組</p>
+</footer>
 </body>
 </html>
