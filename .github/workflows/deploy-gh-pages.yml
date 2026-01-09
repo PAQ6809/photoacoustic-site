@@ -1,0 +1,36 @@
+# 將網站部署到 GitHub Pages 的工作流
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main    # 僅在 main 分支 push 時部署
+
+permissions:
+  contents: read      # 允許讀取程式碼
+  pages: write        # 允許寫入 GitHub Pages
+  id-token: write     # 部署時需要的身刊憑證
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 檢出儲存庫內容
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 初始化 GitHub Pages 環境
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # 上傳要部署的静態檔案；對於純 HTML 工程，直接指定目前目錄即可
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./
+
+      # 部署至 GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
