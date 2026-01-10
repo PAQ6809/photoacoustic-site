@@ -6,7 +6,6 @@
     <title>PhotoAcoustic System｜光聲系統</title>
     <!-- favicon and external libraries -->
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4129/4129570.png"/>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
     <style>
         /* Reset and base styles */
@@ -172,6 +171,90 @@
             section { padding: 4rem 1rem; }
             .features { flex-direction: column; }
         }
+
+        /* AI 助理聊天視窗樣式 */
+        .chatbot-container {
+            max-width: 420px;
+            margin: 2rem auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            font-family: "Noto Sans TC", sans-serif;
+            background: #111733;
+        }
+        .chatbot-header {
+            background: linear-gradient(135deg, #0f4c75, #4db3e6);
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+        .chatbot-header span { margin-left: 10px; }
+        .chatbot-messages {
+            padding: 20px;
+            background: #0f142d;
+            height: 220px;
+            overflow-y: auto;
+        }
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .message-avatar {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        .message-bubble {
+            background: #161f3d;
+            padding: 10px 15px;
+            border-radius: 12px;
+            border-bottom-left-radius: 2px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+            max-width: 80%;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #f5f7ff;
+        }
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+        .chatbot-input-area {
+            display: flex;
+            border-top: 1px solid #1f2642;
+            padding: 12px;
+            background: #0f142d;
+        }
+        .chatbot-input-area input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #2c365d;
+            border-radius: 20px;
+            margin-right: 10px;
+            outline: none;
+            background: #0d1130;
+            color: #f5f5f5;
+        }
+        .chatbot-input-area input::placeholder { color: #9aa3c4; }
+        .chatbot-input-area button {
+            background: #4db3e6;
+            color: #0d1130;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .chatbot-input-area button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(77, 179, 230, 0.35);
+        }
     </style>
 </head>
 <body>
@@ -235,28 +318,40 @@
     </div>
 </section>
 
-<!-- 💬 AI Chatbot Assistant (frontend-only demo, tone: 傲嬌又親切♥) -->
-<div id="ai-assistant" style="position:fixed; bottom:20px; right:20px; z-index:9999;">
-    <button onclick="toggleChat()" style="padding:10px 16px; background:#4db3e6; color:#0d1130; border:none; border-radius:10px; font-weight:bold; cursor:pointer; box-shadow:0 0 10px rgba(0,0,0,0.3);">
-        💬 AI 助理
-    </button>
-    <div id="chat-window" style="display:none; width:300px; height:400px; background:#1c2331; color:white; border-radius:10px; margin-top:10px; padding:10px; box-shadow:0 0 20px rgba(0,0,0,0.4); overflow-y:auto;">
-        <div id="chat-log" style="height:300px; overflow-y:auto; font-size:0.9rem;">
-            <div>👾：哼～你終於來問我了呢，想知道光聲是什麼對吧？♥</div>
+<!-- 💬 AI Chatbot Assistant (UI demo) -->
+<section id="ai-assistant" style="padding: 2rem 0;">
+    <div class="chatbot-container" data-aos="fade-up">
+        <div class="chatbot-header">
+            💬 <span>PhotoAcoustic AI 助理</span>
         </div>
-        <input type="text" id="chat-input" placeholder="輸入你的問題..." style="width:100%; padding:8px; border-radius:5px; border:none; margin-top:10px; background:#222b45; color:white;">
-        <button onclick="sendChat()" style="margin-top:5px; width:100%; padding:8px; background:#4db3e6; color:#0d1130; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">送出</button>
+        <div class="chatbot-messages">
+            <div class="message bot">
+                <div class="message-avatar">👾</div>
+                <div class="message-bubble">
+                    你好！我是光聲系統的智慧助理。<br>
+                    <span class="typing-cursor">想了解光聲技術如何應用在耳膜檢測嗎？</span>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" placeholder="輸入您的問題...">
+            <button type="button">送出</button>
+        </div>
     </div>
-</div>
+</section>
 
 <!-- Contact section -->
 <section id="contact" data-aos="fade-up">
     <h2 data-en="Contact Us" data-zh="聯絡我們">聯絡我們</h2>
-    <form id="contact-form">
-        <input type="text" name="user_name" placeholder="您的姓名" data-en="Your Name" required>
-        <input type="email" name="user_email" placeholder="電子信箱" data-en="Email Address" required>
-        <textarea name="message" rows="6" placeholder="請輸入您的訊息..." data-en="Type your message..."></textarea>
-        <button type="submit" class="btn" data-en="Submit" data-zh="送出">送出</button>
+    <form action="https://formspree.io/f/your-form-id" method="POST" style="max-width: 440px; margin: auto;">
+        <div style="margin-bottom: 10px;">
+            <input type="email" name="email" placeholder="您的 Email" required style="width: 100%; padding: 10px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <textarea name="message" placeholder="您的訊息" rows="4" required style="width: 100%; padding: 10px;"></textarea>
+        </div>
+        <button type="submit" class="btn" data-en="Submit" data-zh="送出" style="width: 100%;">送出</button>
+        <p style="margin-top: 0.5rem; color: #9aa3c4; font-size: 0.9rem;">請將 action 換成你在 Formspree 建立的表單網址，即可收到 Email 通知。</p>
     </form>
 </section>
 
@@ -270,43 +365,6 @@
 <script>
     // Initialize AOS library for animations
     AOS.init();
-    // Initialize EmailJS
-    (function() { emailjs.init("service_ny95zid"); })();
-    // Contact form handler
-    document.getElementById("contact-form").addEventListener("submit", function(event) {
-        event.preventDefault();
-        emailjs.sendForm("service_ny95zid", "template_default", this).then(function(response) {
-            alert("訊息已送出，感謝聯絡我們！");
-        }, function(error) {
-            alert("發送失敗，請稍後再試。\n" + JSON.stringify(error));
-        });
-    });
-    // AI Chat toggle function
-    function toggleChat() {
-        const chat = document.getElementById('chat-window');
-        chat.style.display = chat.style.display === 'none' ? 'block' : 'none';
-    }
-    // AI Chat send function
-    function sendChat() {
-        const input = document.getElementById('chat-input');
-        const log = document.getElementById('chat-log');
-        const text = input.value.trim();
-        if (!text) return;
-        log.innerHTML += `<div>你：${text}</div>`;
-        input.value = '';
-        setTimeout(() => {
-            let reply = '';
-            if (/光聲|photoacoustic/.test(text)) {
-                reply = '光聲技術是透過光照產生聲音震動的超酷技術呢～♥ 不過你這樣問我…我可是有點害羞呢！';
-            } else if (/用途|做什麼/.test(text)) {
-                reply = '你是想知道它的應用嗎？像是人工耳膜、聲音成像、甚至是非侵入式檢測都有唷！哼～不錯嘛♥';
-            } else {
-                reply = '這問題嘛…我暫時還想不到欸 >///< 要不要換個問法？';
-            }
-            log.innerHTML += `<div>👾：${reply}</div>`;
-            log.scrollTop = log.scrollHeight;
-        }, 600);
-    }
     // Language toggle for bilingual support
     function toggleLanguage() {
         document.querySelectorAll("[data-en]").forEach(el => {
